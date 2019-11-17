@@ -56,7 +56,7 @@ def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     rez = min(data, default=None, key=lambda x: (len(str(x))))
     return str(rez) if rez is not None else None
 
-    #!! by using list comprehension
+    #! by using list comprehension
 
     # if not data:
     #     return None
