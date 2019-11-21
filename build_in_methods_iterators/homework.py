@@ -143,21 +143,34 @@ def task_10_generator_of_simple_numbers() -> Generator[int, None, None]:
         >>> 3
     """
 
-    def primes():
-        (h, n) = (2, 1)
-        k = 3
-        while True:
-            if not any(k % i == 0 for i in range(2, k)):  # h is composite number, so continue iteration
-                (h, n) = (k, n + 1)  # After the for loop we can find out the next prime number
-                k += 1
-            else:
-                k += 1  # Remember to continue the loop, if not then next function may return the same number
-                continue
-            yield h
+
+    def prime(num):
+        i = 2
+        while i < num:
+            j = 2
+            while j <= (i / j):
+                if not (i % j): break
+                j += 1
+            if j > i / j:
+                yield i
+            i += 1
 
     a = primes()
+    return next(a)
+    ### strange prime
+    # def primes():
+    #     (h, n) = (2, 1)
+    #     k = 3
+    #     while True:
+    #         if not any(k % i == 0 for i in range(2, k)):  # h is composite number, so continue iteration
+    #             (h, n) = (k, n + 1)  # After the for loop we can find out the next prime number
+    #             k += 1
+    #         else:
+    #             k += 1  # Remember to continue the loop, if not then next function may return the same number
+    #             continue
+    #         yield h
 
-    return [next(a) for _ in range(20)]
+
 
 
 def task_11_create_list_of_random_characters() -> List[str]:
