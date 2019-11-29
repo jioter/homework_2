@@ -56,7 +56,7 @@ def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     rez = min(data, default=None, key=lambda x: (len(str(x))))
     return str(rez) if rez is not None else None
 
-    #!! by using list comprehension
+    # !! by using list comprehension
 
     # if not data:
     #     return None
@@ -67,7 +67,7 @@ def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     #     rez_to_str = ''.join(str(e) for e in rez)
     #     return rez_to_str
 
-    #!! solution by using cycles
+    # !! solution by using cycles
 
     # if not data:
     #     return None
@@ -107,6 +107,7 @@ def task_7_max_value_list_of_lists(data: List[List[int]]) -> int:
     # rez_2 = list((lambda x: x[i] for i in data))
     # return rez_2
 
+
 def task_8_sum_of_ints(data: List[int]) -> int:
     """
     Find sum of all items in given list
@@ -143,34 +144,20 @@ def task_10_generator_of_simple_numbers() -> Generator[int, None, None]:
         >>> 3
     """
 
-
     def prime(num):
         i = 2
         while i < num:
             j = 2
             while j <= (i / j):
-                if not (i % j): break
+                if not (i % j):
+                    break
                 j += 1
             if j > i / j:
                 yield i
             i += 1
 
-    a = primes()
-    return next(a)
-    ### strange prime
-    # def primes():
-    #     (h, n) = (2, 1)
-    #     k = 3
-    #     while True:
-    #         if not any(k % i == 0 for i in range(2, k)):  # h is composite number, so continue iteration
-    #             (h, n) = (k, n + 1)  # After the for loop we can find out the next prime number
-    #             k += 1
-    #         else:
-    #             k += 1  # Remember to continue the loop, if not then next function may return the same number
-    #             continue
-    #         yield h
-
-
+    for i in prime(200):
+        yield i
 
 
 def task_11_create_list_of_random_characters() -> List[str]:
@@ -178,4 +165,10 @@ def task_11_create_list_of_random_characters() -> List[str]:
     Create list of 20 elements where each element is random letter from latin alphabet
 
     """
-    pass
+    import string
+    import random
+
+    list1 = list(string.ascii_lowercase)
+    list2 = list1[:-6]
+    res = random.sample(list2, len(list2))
+    return res
